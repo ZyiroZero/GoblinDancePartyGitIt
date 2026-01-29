@@ -14,6 +14,8 @@ namespace GME1003GoblinDanceParty
 
         //Declare some variables
         private int _numStars;          //how many stars?
+        private int _minStars;          //min amount of stars
+        private int _maxStars;          //max amount of stars
         private List<int> _starsX;      //list of star x-coordinates
         private List<int> _starsY;      //list of star y-coordinates
 
@@ -40,12 +42,14 @@ namespace GME1003GoblinDanceParty
 
         protected override void Initialize()
         {
-            _rng = new Random();        //finish setting up our Randon 
-            _numStars = 100;              //this would be better as a random number between 100 and 300
+            _rng = new Random(); //finish setting up our Random 
+            _minStars = 50;
+            _maxStars = 300;
+            _numStars = _rng.Next(_minStars, _maxStars + 1);   //this would be better as a random number between 100 and 300
             _starsX = new List<int>();  //stars X coordinate
             _starsY = new List<int>();  //stars Y coordinate
 
-            _starColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));                   //this is a "relatively" easy way to create random colors
+            _starColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));       //this is a "relatively" easy way to create random colors
             _starScale = _rng.Next(50, 100) / 200f; //this will affect the size of the stars
             _starTransparency = _rng.Next(25, 101)/100f;   //star transparency
             _starRotation = _rng.Next(0, 101) / 100f;       //star rotation
